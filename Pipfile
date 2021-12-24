@@ -9,8 +9,10 @@ markdown = "*"
 django-pure-pagination = "*"
 elasticsearch = ">=2,<3"
 django-haystack = "*"
+importlib-metadata = "*"
+gunicorn = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.10"
+python_version = "3"
