@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -24,7 +26,8 @@ class Post(models.Model):
     # 存储比较短的字符串可以使用 CharField，但对于文章的正文来说可能会是一大段文本，因此使用 TextField 来存储大段文本。
     body = models.TextField()
 
-    created_time = models.DateTimeField()
+    # 默认创建时间
+    created_time = models.DateTimeField('created_time', default=timezone.now)
     modified_time = models.DateTimeField()
 
     # 文章摘要，可以没有文章摘要，但默认情况下 CharField 要求我们必须存入数据，否则就会报错。
@@ -51,3 +54,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    # 覆写save方法， 保存前设置修改时间
+    def save(self, *args, **kwargs):
+        self.modified_time = timezone.now()
+        super().save(*args, **kwargs)
+
+    # 让post生成自己的url，去namespace blog下找名字为detail的url pattern，这样 Post 自己就生成了自己的 URL
+    def get_absolute_url(self):
+        return reverse('blog:detail', kwargs={'pk': self.pk})
