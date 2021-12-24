@@ -10,5 +10,8 @@ class Comment(models.Model):
     created_time = models.DateTimeField('created_time', default=timezone.now)
     post = models.ForeignKey('blog.Post', on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ['-created_time']
+
     def __str__(self):
         return '{}: {}'.format(self.name, self.text[:20])

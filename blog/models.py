@@ -54,6 +54,11 @@ class Post(models.Model):
     # User 是 django 的用户模型。
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    views = models.PositiveIntegerField(default=0, editable=False)
+
+    class Meta:
+        ordering = ['-created_time', 'title']
+
     def __str__(self):
         return self.title
 
@@ -76,3 +81,7 @@ class Post(models.Model):
     # 让post生成自己的url，去namespace blog下找名字为detail的url pattern，这样 Post 自己就生成了自己的 URL
     def get_absolute_url(self):
         return reverse('blog:detail', kwargs={'pk': self.pk})
+
+    def increase_views(self):
+        self.views += 1
+        self.save(update_fields=['views'])
