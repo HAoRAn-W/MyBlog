@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django = "==2.2.3"
 markdown = "*"
+django-pure-pagination = "*"
+elasticsearch = ">=2,<3"
 
 [dev-packages]
 
