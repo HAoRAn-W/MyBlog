@@ -1,4 +1,6 @@
 {% load static %}
+{% load blog_extras %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +63,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-5 col-xs-8">
                 <div class="logo">
-                    <h1><a href="blog/index.html"><b>Black</b> &amp; White</a></h1>
+                    <h1><a href="blog/index.html"><b>RYAN</b>'s blog</a></h1>
                 </div>
             </div><!-- col-md-4 -->
             <div class="col-md-8 col-sm-7 col-xs-4">
@@ -107,6 +109,18 @@
             <aside class="col-md-4">
                 {% block toc %}
                 {% endblock toc %}
+
+                {% show_recent_posts 6 %}
+
+                {% show_archives %}
+
+                {% show_categories %}
+
+                {% show_tags %}
+
+                <div class="rss">
+                    <a href=""><span class="ion-social-rss-outline"></span> RSS</a>
+                </div>
             </aside>
         </div>
     </div>
@@ -129,20 +143,20 @@
     <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
     <nav>
         <ul>
-            <li><a href="blog/index.html">首页</a></li>
-            <li><a href="full-width.html">博客</a></li>
-            <li><a href="about.html">关于</a></li>
-            <li><a href="contact.html">联系</a></li>
+            <li><a href="blog/index.html">Home</a></li>
+            <li><a href="full-width.html">Posts</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 </div>
 
 <script src="{% static 'blog/js/script.js' %}"></script>
-  <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
-  <script src="https://cdn.bootcss.com/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
-  <script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
     hljs.initHighlightingOnLoad();
     hljs.initLineNumbersOnLoad();
-  </script>
+</script>
 </body>
 </html>
