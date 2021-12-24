@@ -42,3 +42,4 @@ def tag(request, pk):
     # 记得在开始部分导入 Tag 类
     t = get_object_or_404(Tag, pk=pk)
     post_list = Post.objects.filter(tags=t).order_by('-created_time')
+    return render(request, 'blog/index.html', context={'post_list': post_list})
