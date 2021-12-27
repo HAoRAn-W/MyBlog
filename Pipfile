@@ -13,6 +13,7 @@ importlib-metadata = "*"
 gunicorn = "*"
 
 [dev-packages]
+fabric = "*"
 
 [requires]
 python_version = "3"
